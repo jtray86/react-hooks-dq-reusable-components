@@ -9,7 +9,15 @@ Consider what the tiles have in common and what they do not:
 */
 
 function PotionTile(props) {
-  return <div>PotionTile</div>;
+  const {potion, potionCallback, children, type} = props
+  return (
+    <div className={type === "shop" ? "card" : "inventory-card"}>
+      <div onClick={() => potionCallback(potion.id)} className="image-wrapper">
+        <img className="image" alt={potion.name} src={potion.image_url} />
+      </div>
+      {children}
+    </div>
+  )
 }
 
 export default PotionTile;
